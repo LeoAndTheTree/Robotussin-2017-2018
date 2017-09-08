@@ -9,42 +9,37 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 /**
  * This is NOT an opmode.
  *
- * This class can be used to define all the specific hardware for a single robot.
- * In this case that robot is a Pushbot.
- * See PushbotTeleopTank_Iterative and others classes starting with "Pushbot" for usage examples.
+ * This class defines all the specific hardware for the club fair robot.
  *
  * This hardware class assumes the following device names have been configured on the robot:
- * Note:  All names are lower case and some have single spaces between words.
  *
- * Motor channel:  Left  drive motor:        "left_drive"
- * Motor channel:  Right drive motor:        "right_drive"
- * Motor channel:  Manipulator drive motor:  "left_arm"
- * Servo channel:  Servo to open left claw:  "left_hand"
- * Servo channel:  Servo to open right claw: "right_hand"
+ * Motor channel:  Left front drive motor:             "Left Front"
+ * Motor channel:  Left back drive motor:              "Left Back"
+ * Motor channel:  Right front drive motor:            "Right Front"
+ * Motor channel:  Right back drive motor:             "Right Back"
+ * Motor channel:  Shooter top motor:                  "Shoot Top"
+ * Motor channel:  Shooter bottom motor:               "Shoot Bottom"
+ * Servo channel:  Servo to push ball into shooter:    "Ball Pusher"
  */
 public class HardwarePushbotChanged
 {
     /* Public OpMode members. */
-    public DcMotor  leftFrontMotor   = null;
-    public DcMotor  leftBackMotor   = null;
+    public DcMotor leftFrontMotor = null;
+    public DcMotor leftBackMotor = null;
     public DcMotor rightFrontMotor = null;
     public DcMotor rightBackMotor = null;
     public DcMotor shootTopMotor = null;
     public DcMotor shootBottomMotor = null;
     public Servo ballPusher = null;
 
-    //public DcMotor  rightMotor  = null;
-    //public DcMotor  armMotor    = null;
-    //public Servo    leftClaw    = null;
-    //public Servo    rightClaw   = null;
 
-    public static final double MID_SERVO       =  0.5 ;
-    public static final double ARM_UP_POWER    =  0.45 ;
-    public static final double ARM_DOWN_POWER  = -0.45 ;
+    public static final double MID_SERVO = 0.5;
+    public static final double ARM_UP_POWER = 0.45;
+    public static final double ARM_DOWN_POWER = -0.45;
 
     /* local OpMode members. */
-    HardwareMap hwMap           =  null;
-    private ElapsedTime period  = new ElapsedTime();
+    HardwareMap hwMap = null;
+    private ElapsedTime period = new ElapsedTime();
 
     /* Constructor */
     public HardwarePushbotChanged(){
@@ -57,7 +52,6 @@ public class HardwarePushbotChanged
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        //leftMotor   = hwMap.dcMotor.get("left_drive");
         leftFrontMotor = hwMap.dcMotor.get("Left Front");
         leftBackMotor = hwMap.dcMotor.get("Left Back");
         rightBackMotor = hwMap.dcMotor.get("Right Back");
@@ -76,9 +70,6 @@ public class HardwarePushbotChanged
         //rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 
         // Set all motors to zero power
-        //leftMotor.setPower(0);
-        //rightMotor.setPower(0);
-        //armMotor.setPower(0);
         leftFrontMotor.setPower(0);
         leftBackMotor.setPower(0);
         rightFrontMotor.setPower(0);
@@ -88,9 +79,6 @@ public class HardwarePushbotChanged
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        //leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBackMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -100,10 +88,6 @@ public class HardwarePushbotChanged
 
 
         // Define and initialize ALL installed servos.
-        //leftClaw = hwMap.servo.get("left_hand");
-        //rightClaw = hwMap.servo.get("right_hand");
-        //leftClaw.setPosition(MID_SERVO);
-        //rightClaw.setPosition(MID_SERVO);
         ballPusher = hwMap.servo.get("Ball Pusher");
         ballPusher.setPosition(MID_SERVO);
     }
