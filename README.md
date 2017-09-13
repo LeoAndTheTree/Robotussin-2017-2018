@@ -6,5 +6,9 @@ Programming:
  * Please refer to the following website for instructions on the new onbot Java:
  * https://github.com/ftctechnh/ftc_app/wiki
 
+ * Although FTC now supports onbot Java programming, a copy of all java files should still be stored locally
+ * These local storage should be stored under the Software folder and within a folder named according to the use of the programs
+
+
 Hardware and CAD:
- * Although it has not been created yet, but a folder named Hardware should be created and all the CAD files should be located in that folder
+ * All CAD files and other supportive files should be stored in the folder named Hardware
